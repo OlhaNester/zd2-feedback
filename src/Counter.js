@@ -1,5 +1,6 @@
 import React from 'react';
 import './Counter.css';
+import PropTypes from 'prop-types';
 
 class Counter extends React.Component {
     static defaultProps = {
@@ -34,8 +35,8 @@ class Counter extends React.Component {
         countTotalFeedback();
     countPositiveFeedbackPercentage();
     };
-    countTotalFeedback();
-    countPositiveFeedbackPercentage();
+    //countTotalFeedback();
+    //countPositiveFeedbackPercentage();
 
 
     
