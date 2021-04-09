@@ -5,6 +5,8 @@ class Form extends Component {
   state = {
     name: '',
     number: '',
+    id: '',
+    
   };
   //генерируем id для контакта
     // let contactId = shortid.generte();
@@ -20,11 +22,11 @@ class Form extends Component {
   handleSubmit = event => {
       event.preventDefault();
       
-      const contact = {        //формирование контакта
-          id: shortid.generte(),
-          name: this.state.name,
-          number: this.state.number,
-      };
+      // const contact = {        //формирование контакта
+      //     id: shortid.generte(),
+      //     name: this.state.name,
+      //     number: this.state.number,
+      // };
         this.props.onSubmit(this.state);
     this.reset();
     };

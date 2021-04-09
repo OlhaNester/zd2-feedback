@@ -14,8 +14,8 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
   };
-  formHandler = data => {
-    console.log(data);
+  formHandler = contact => {
+    console.log(contact);
   };
   // удаляет контакт
   deleteContact = contactId => {
@@ -23,10 +23,7 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  // добавляет контакт
-  addContact = newContact => {
-    this.setState(({ contacts }) => ({ contacts: [newContact, ...contacts], }));
-  }
+  
  
   render() {
     const { contacts } = this.state;
