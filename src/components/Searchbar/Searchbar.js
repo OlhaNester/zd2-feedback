@@ -1,7 +1,5 @@
 import { Component } from 'react';
 import styles from './Searchbar.module.css';
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
 //import PropTypes from 'prop-types';
 
 class Searchbar extends Component {
@@ -14,11 +12,7 @@ class Searchbar extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.query.trim() === '') {
-      toast.error('This field cannot be empty');
-      return;
-    }
-      this.props.onSubmit(this.state.query);
+    this.props.onSubmit(this.state.query);
     this.setState({ query: '' });
   };
 
