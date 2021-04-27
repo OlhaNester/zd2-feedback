@@ -1,63 +1,32 @@
 
-import React, { Component } from 'react';
- import axios from 'axios';
+import React from 'react';
+import  {Route, Link}  from 'react-router-dom';
+import HomeView from './views/HomeView';
+import Authors from './views/Authors';
+import Books from './views/Books';
 
-import Searchbar from './components/Searchbar';
-import ImageGallery from './components/ImageGallery';
-import Modal from './components/Modal';
-import fetchImage from './services/fetchImage';
 
-//import Button from './components/Button';
-//import Loader from './components/Loader'
 //import './App.css';
 
-class App extends Component {
-  state = {
-    images: [],
-    filter: '',
-    showModal: false,
-    //isLoading: false,
-    //error: null,
-  };
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.filter !== this.state.filter) {
-      fetchImage();
-    }
-  }
+const App =()=> (
+  <>
+     {/* навигация - сделать ссылки, заимпортировать Link */}
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+    <li>
+        <Link to="/authors">Authors</Link>
+      </li>
+      <li>
+        <Link to="/books">Books</Link>
+      </li>
+    </ul>
+    <Route exact path="/" component={HomeView} />
+    <Route path="/authors" component={Authors} />
+    <Route path="/books" component={Books} />
+  </>
+);
 
-  handleSearch = query => {
-    this.setState({ filter: query });
-  };
-
-    toggleModal = () => {
-    this.setState(({ showModal }) => ({ showModal: !showModal }));
-  };
-
-  render() {
-    const { images, showModal } = this.state;
-    return (
-      <div className="App">
-        <Searchbar onSubmit={this.handleSearch} />
-        <ImageGallery images={images} />
-        <button type="button" onClick={this.toggleModal}>
-          {' '}
-          Открыть модалку
-        </button>
-        {showModal && (
-          <Modal onClose={this.toggleModal}>
-            <h1>Hello!</h1>
-            <button type="button" onClick={this.toggleModal}>
-              {' '}
-              Закрыть модалку
-            </button>
-          </Modal>
-        )}
-        {/* <Button>
-          <Loader />
-        </Button> */}
-      </div>
-    );
-  }
-}
 
 export default App;
