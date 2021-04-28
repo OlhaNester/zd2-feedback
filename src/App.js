@@ -1,32 +1,52 @@
-
 import React from 'react';
-import  {Route, Link}  from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import HomeView from './views/HomeView';
-import Authors from './views/Authors';
-import Books from './views/Books';
+import Authors from './views/AuthorView';
+import Books from './views/BookView';
+import NotFound from './views/NotFound';
 
-
-//import './App.css';
-
-const App =()=> (
+const App = () => (
   <>
-     {/* навигация - сделать ссылки, заимпортировать Link */}
+    {/* навигация - сделать ссылки, заимпортировать Link */}
     <ul>
       <li>
-        <Link to="/">Home</Link>
-      </li>
-    <li>
-        <Link to="/authors">Authors</Link>
+        <NavLink
+          exact
+          to="/"
+          className="NavLink"
+          activeClassName="NavLink_active"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/books">Books</Link>
+        <NavLink
+          exact
+          to="/authors"
+          className="NavLink"
+          activeClassName="NavLink_active"
+        >
+          Authors
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          exact
+          to="/books"
+          className="NavLink"
+          activeClassName="NavLink_active"
+        >
+          Books
+        </NavLink>
       </li>
     </ul>
-    <Route exact path="/" component={HomeView} />
-    <Route path="/authors" component={Authors} />
-    <Route path="/books" component={Books} />
+    <Switch>
+      <Route exact path="/" component={HomeView} />
+      <Route path="/authors" component={Authors} />
+      <Route path="/books" component={Books} />
+      <Route component={NotFound} />
+    </Switch>
   </>
 );
-
 
 export default App;
