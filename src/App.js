@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import HomeView from './views/HomeView';
-import Authors from './views/AuthorView';
-import Books from './views/BookView';
-import NotFound from './views/NotFound';
+import MoviesView from './views/MoviesView';
+
 
 const App = () => (
   <>
@@ -22,29 +21,29 @@ const App = () => (
       <li>
         <NavLink
           exact
-          to="/authors"
+          to="/movie"
           className="NavLink"
           activeClassName="NavLink_active"
         >
-          Authors
+          Movies
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink
           exact
-          to="/books"
+          to="/movie/:movieId"
           className="NavLink"
           activeClassName="NavLink_active"
         >
           Books
         </NavLink>
-      </li>
+      </li> */}
     </ul>
     <Switch>
       <Route exact path="/" component={HomeView} />
-      <Route path="/authors" component={Authors} />
-      <Route path="/books" component={Books} />
-      <Route component={NotFound} />
+      <Route path="/movies" component={MoviesView} />
+      {/* <Route path="/movies/:movies/Id" component={MovieDetailsView} /> */}
+      {/* <Redirect to="/" /> */}
     </Switch>
   </>
 );
