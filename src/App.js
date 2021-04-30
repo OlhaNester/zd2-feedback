@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import HomeView from './views/HomeView';
 import MoviesView from './views/MoviesView';
+import MovieDetailsView from './views/MovieDetailsView';
 
 
 const App = () => (
@@ -42,7 +43,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomeView} />
       <Route path="/movies" component={MoviesView} />
-      {/* <Route path="/movies/:movies/Id" component={MovieDetailsView} /> */}
+      <Route path="/movies/:movie/Id" component={MovieDetailsView} />
       {/* <Redirect to="/" /> */}
     </Switch>
   </>
