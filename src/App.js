@@ -4,10 +4,9 @@ import HomeView from './views/HomeView';
 import MoviesView from './views/MoviesView';
 import MovieDetailsView from './views/MovieDetailsView';
 
-
 const App = () => (
   <>
-    {/* навигация - сделать ссылки, заимпортировать Link */}
+    {/* навигация - сделать ссылки, заимпортировать Link или NavLink */}
     <ul>
       <li>
         <NavLink
@@ -19,32 +18,22 @@ const App = () => (
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink
           exact
-          to="/movie"
+          to="/movies"
           className="NavLink"
           activeClassName="NavLink_active"
         >
           Movies
         </NavLink>
       </li>
-      {/* <li>
-        <NavLink
-          exact
-          to="/movie/:movieId"
-          className="NavLink"
-          activeClassName="NavLink_active"
-        >
-          Books
-        </NavLink>
-      </li> */}
     </ul>
     <Switch>
       <Route exact path="/" component={HomeView} />
       <Route path="/movies" component={MoviesView} />
-      <Route path="/movies/:movie/Id" component={MovieDetailsView} />
-      {/* <Redirect to="/" /> */}
+      <Route path="/:movieId" component={MovieDetailsView} />
     </Switch>
   </>
 );
