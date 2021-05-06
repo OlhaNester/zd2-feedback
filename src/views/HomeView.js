@@ -14,6 +14,7 @@ class HomeView extends Component {
     this.setState({ movies: response.data.results });
   }
   render() {
+    const baseUrl = 'https://image.tmdb.org/t/p/w500';
     return (
       <>
         <h1>Trending today</h1>;

@@ -14,7 +14,9 @@ class MoviesView extends Component {
     this.setState({ movies: response.data.results });
     console.log(response.data.results);
     
-    handleChange = event => {
+    
+  }
+  handleChange = event => {
       this.setState({ query: event.currentTarget.value });
     };
 
@@ -23,8 +25,6 @@ class MoviesView extends Component {
       this.props.onSubmit(this.state.query);
       this.setState({ query: '' });
     };
-
-  }
   render() {
     return (
       <>

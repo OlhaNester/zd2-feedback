@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { Route, NavLink, Switch } from 'react-router-dom';
-import MovieCastView from './MovieCastView';
-import MovieReviewsView from './MovieReviewsView';
+//import MovieCastView from './MovieCastView';
+//import MovieReviewsView from './MovieReviewsView';
 
 class MovieDetailsView extends Component {
   state = {
+    movie: {},
     title: null,
     poster_path: null,
     vote_average: null,
@@ -19,8 +20,9 @@ class MovieDetailsView extends Component {
     const response = await Axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=ee059677e8bdbcfa281a4ce6304abcdd&language=en-US`,
     );
-    //console.log(response);
-    this.setState({ ...response.data });
+    console.log(response);
+    //this.setState({ ...response.data });
+    this.setState({ movie: response.data });
   }
 
   render() {
@@ -42,16 +44,16 @@ class MovieDetailsView extends Component {
           </li>
           <li>
             <h3> Genres</h3>
-            <p>{this.state.genre}</p>
+            <p>{this.state.genres}</p>
           </li>
         </ul>
-        <div>
+        {/* <div>
           <h4>Additional infomation</h4>
           <ul>
             <li>
               <NavLink
                 exact
-                to="/:movieId/cast"
+                to={`${this.props.match.url}${movie.id}/cast`}
                 className="NavLink"
                 activeClassName="NavLink_active"
               >
@@ -61,7 +63,7 @@ class MovieDetailsView extends Component {
             <li>
               <NavLink
                 exact
-                to="/:movieId/reviews"
+                to={`${this.props.match.url}${movie.id}/reviews`}
                 className="NavLink"
                 activeClassName="NavLink_active"
               >
@@ -76,7 +78,7 @@ class MovieDetailsView extends Component {
             path="/:movieId/reviews"
             component={MovieReviewsView}
           />
-        </Switch>
+        </Switch> */}
       </>
     );
   }
